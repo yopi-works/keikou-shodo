@@ -82,6 +82,20 @@
       min-height: 500px;
       padding: 0 !important; /* section共通パディングを上書き */
       position: relative;
+      background: var(--cream);
+    }
+
+    /* ヒーロー全体の透かし背景 */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('Ph/bg003.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.22;
+      z-index: 0;
+      pointer-events: none;
     }
 
     /* ロゴ：左上に重ねて表示 */
@@ -101,7 +115,7 @@
     /* 左スペース（ロゴが重なるエリア） */
     .hero-spacer {
       flex: 0 0 14%;
-      background: var(--cream);
+      background: transparent;
       position: relative;
     }
 
@@ -136,20 +150,9 @@
       padding: 3rem 4rem;
       position: relative;
       overflow: hidden;
-      background: #f5f2ed;
+      background: transparent;
     }
 
-    /* 右側の透かし背景 */
-    .hero-right::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url('Ph/washicream.png');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.13;
-      z-index: 0;
-    }
 
     /* テキストエリア */
     .hero-content {
