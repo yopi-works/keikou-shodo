@@ -222,17 +222,6 @@
       gap: 0.5rem;
     }
 
-    .section-label::before {
-      content: '';
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      background-image: url('Ph/fude-circle_B.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      flex-shrink: 0;
-    }
 
     .section-title {
       text-align: center;
@@ -240,6 +229,22 @@
       font-size: clamp(1.5rem, 3vw, 2rem);
       color: var(--navy);
       margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background-image: url('Ph/fude-circle_B.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      flex-shrink: 0;
     }
 
     /* ABOUT */
@@ -644,7 +649,7 @@
 
 <!-- ナビゲーション -->
 <nav>
-  <div class="nav-logo"><img src="Ph/fude-circle_white.png" style="width:22px;height:22px;vertical-align:middle;margin-right:0.4rem;opacity:0.9;">啓公書道教室</div>
+  <div class="nav-logo"><img src="Ph/fude-circle_white.png" style="width:22px;height:22px;vertical-align:top;margin-right:0.4rem;opacity:0.9;">啓公書道教室</div>
   <ul class="nav-links">
     <li><a href="#about">教室について</a></li>
     <li><a href="#courses">クラス・料金</a></li>
@@ -656,7 +661,7 @@
 <!-- ヒーロー -->
 <section class="hero" id="hero-section">
   <!-- ロゴ：左上に重ねて表示 -->
-  <div class="hero-logo"><img src="Ph/fude-circle.png" style="width:2.2rem;height:2.2rem;display:block;margin-bottom:0.6rem;">啓公書道教室</div>
+  <div class="hero-logo"><img src="Ph/fude-circle.png" style="width:2.2rem;height:2.2rem;display:block;margin:0 auto 0.6rem;">啓公書道教室</div>
   <!-- 左スペース -->
   <div class="hero-spacer"></div>
   <!-- 中：スライドショー帯 -->
