@@ -550,7 +550,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 200px;
+      min-height: 320px;
+      overflow: hidden;
       color: #aaa;
       font-size: 0.9rem;
     }
@@ -562,6 +563,7 @@
     }
 
     .contact .section-title { color: var(--white); }
+    .contact .section-title::before { background-image: url('Ph/fude-circle_white.png'); }
 
     .contact-lead {
       text-align: center;
@@ -910,7 +912,11 @@
       </table>
     </div>
     <div class="access-map">
-      📍 Googleマップを埋め込みます
+      <iframe
+        src="https://maps.google.com/maps?q=北海道札幌市南区川沿3条4丁目4番3号&output=embed&hl=ja&z=16"
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
     </div>
   </div>
 </section>
