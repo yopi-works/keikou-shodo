@@ -106,7 +106,7 @@
       z-index: 10;
       writing-mode: vertical-rl;
       font-family: 'Zen Old Mincho', serif;
-      font-size: 1.6rem;
+      font-size: 3.2rem;
       color: var(--navy);
       letter-spacing: 0.2em;
       line-height: 1.8;
@@ -630,11 +630,67 @@
       color: #C4753A;
     }
 
+    /* ハンバーガーボタン（デスクトップでは非表示） */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 110;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     /* スマホ対応 */
     @media (max-width: 600px) {
+      /* ── ナビ ── */
       nav { padding: 0.8rem 1rem; }
-      .nav-links { gap: 1rem; }
-      .nav-links a { font-size: 0.8rem; }
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(26, 39, 68, 0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 0.5rem 0 1rem;
+        gap: 0;
+        list-style: none;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .nav-links a {
+        display: block;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        letter-spacing: 0.08em;
+      }
+
+      /* ── ヒーロー ── */
+      .hero { flex-direction: column; height: auto; min-height: 100svh; }
+      .hero-spacer { display: none; }
+      .hero-logo { display: none; }
+      .hero-left { flex: none !important; height: 56vw; width: 100%; }
+      .hero-right { padding: 2rem 1.4rem; }
+      .hero h1 { font-size: 1.8rem; }
+
+      /* ── その他セクション ── */
       section { padding: 3.5rem 1.2rem; }
       .about-features { flex-direction: column; align-items: center; }
       .feature-card { max-width: 100%; width: 100%; }
@@ -642,6 +698,10 @@
       .course-card { max-width: 100%; width: 100%; }
       .teacher-inner { flex-direction: column; align-items: center; }
       .access-inner { flex-direction: column; }
+
+      /* ── フローティングボタン ── */
+      #mini-contact-btn { bottom: 1.2rem; right: 1rem; }
+      #contact-popup { padding: 1.5rem; }
     }
   </style>
 </head>
@@ -650,18 +710,21 @@
 <!-- ナビゲーション -->
 <nav>
   <div class="nav-logo"><img src="Ph/fude-circle_white.png" style="width:22px;height:22px;vertical-align:middle;margin-right:0.4rem;opacity:0.9;position:relative;top:-2px;">啓公書道教室</div>
-  <ul class="nav-links">
-    <li><a href="#about">教室について</a></li>
-    <li><a href="#courses">クラス・料金</a></li>
-    <li><a href="#access">アクセス</a></li>
-    <li><a href="#contact">お問い合わせ</a></li>
+  <button class="hamburger" id="hamburger-btn" onclick="toggleMenu()" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about" onclick="closeMenu()">教室について</a></li>
+    <li><a href="#courses" onclick="closeMenu()">クラス・料金</a></li>
+    <li><a href="#access" onclick="closeMenu()">アクセス</a></li>
+    <li><a href="#contact" onclick="closeMenu()">お問い合わせ</a></li>
   </ul>
 </nav>
 
 <!-- ヒーロー -->
 <section class="hero" id="hero-section">
   <!-- ロゴ：左上に重ねて表示 -->
-  <div class="hero-logo"><img src="Ph/fude-circle.png" style="width:2.2rem;height:2.2rem;display:inline-block;margin-bottom:0.4rem;">啓公書道教室</div>
+  <div class="hero-logo"><img src="Ph/fude-circle.png" style="width:4.4rem;height:4.4rem;display:inline-block;margin-bottom:0.6rem;">啓公書道教室</div>
   <!-- 左スペース -->
   <div class="hero-spacer"></div>
   <!-- 中：スライドショー帯 -->
@@ -970,6 +1033,18 @@
       popupShown = true;
     }
   });
+
+  // ハンバーガーメニュー
+  function toggleMenu() {
+    var btn = document.getElementById('hamburger-btn');
+    var links = document.getElementById('nav-links');
+    btn.classList.toggle('open');
+    links.classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('hamburger-btn').classList.remove('open');
+    document.getElementById('nav-links').classList.remove('open');
+  }
 </script>
 
 </body>
